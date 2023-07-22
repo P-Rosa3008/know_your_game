@@ -81,6 +81,8 @@ class _QuestionPageState extends ConsumerState<QuestionPage> with SingleTickerPr
                       IconButton(
                         constraints: BoxConstraints(),
                         padding: EdgeInsets.all(0),
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         onPressed: () {
                           ref.invalidate(questionNumberProvider);
                           context.go(RoutesEndpoints.main);
