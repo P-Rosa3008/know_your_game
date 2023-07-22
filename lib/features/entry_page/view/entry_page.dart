@@ -3,7 +3,6 @@ import 'package:go_router/go_router.dart';
 import 'package:know_your_game/features/entry_page/widgets/language_picker.dart';
 import 'package:know_your_game/features/entry_page/widgets/vip_icon_button.dart';
 import 'package:know_your_game/utils/utils.dart';
-import 'package:know_your_game/utils/widgets/app_bar.dart';
 
 class EntryPage extends StatefulWidget {
   final Widget child;
@@ -15,18 +14,49 @@ class EntryPage extends StatefulWidget {
 
 class EntryPageState extends State<EntryPage> {
   Widget get _child => widget.child;
+
   final List<BottomNavigationBarItem> _icons = [
     BottomNavigationBarItem(
+      activeIcon: Container(
+        padding: EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: Color.fromARGB(166, 32, 51, 97),
+            width: 1.8,
+          ),
+          color: Color.fromARGB(150, 224, 224, 224),
+        ),
+        child: Image.asset(
+          "assets/main_icon.png",
+          height: 35.0,
+        ),
+      ),
       icon: Image.asset(
         "assets/main_icon.png",
-        height: 40.0,
+        height: 30.0,
       ),
       label: "main",
     ),
     BottomNavigationBarItem(
+      activeIcon: Container(
+        padding: EdgeInsets.all(2),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: Color.fromARGB(166, 32, 51, 97),
+            width: 1.8,
+          ),
+          color: Color.fromARGB(150, 224, 224, 224),
+        ),
+        child: Image.asset(
+          "assets/profile_icon.png",
+          height: 35.0,
+        ),
+      ),
       icon: Image.asset(
         "assets/profile_icon.png",
-        height: 40.0,
+        height: 30.0,
       ),
       label: "main",
     ),
@@ -71,25 +101,30 @@ class EntryPageState extends State<EntryPage> {
       ),
       body: Scaffold(
         bottomNavigationBar: SizedBox(
-          height: 65,
+          height: 55,
           child: Container(
-            padding: EdgeInsets.only(top: 8),
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border(
                 top: BorderSide(color: ColorsUiTheme.mainBorder, width: 2.0),
               ),
             ),
-            child: BottomNavigationBar(
-              backgroundColor: Colors.white,
-              elevation: 0,
-              items: _icons,
-              iconSize: 24.0,
-              selectedFontSize: 0,
-              showSelectedLabels: false,
-              showUnselectedLabels: false,
-              currentIndex: _calculateSelectedIndex(context),
-              onTap: (int idx) => _onItemTapped(idx, context),
+            child: Theme(
+              data: ThemeData(
+                splashColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+              ),
+              child: BottomNavigationBar(
+                backgroundColor: Colors.white,
+                elevation: 0,
+                items: _icons,
+                // iconSize: 20.0,
+                selectedFontSize: 0,
+                showSelectedLabels: false,
+                showUnselectedLabels: false,
+                currentIndex: _calculateSelectedIndex(context),
+                onTap: (int idx) => _onItemTapped(idx, context),
+              ),
             ),
           ),
         ),
