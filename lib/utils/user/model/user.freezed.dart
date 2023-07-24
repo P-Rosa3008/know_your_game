@@ -21,13 +21,15 @@ User _$UserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
+  String get username => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   int get correctAnswers => throw _privateConstructorUsedError;
   int get wrongAnswers => throw _privateConstructorUsedError;
-  String get season => throw _privateConstructorUsedError;
+  String get avatarUrl => throw _privateConstructorUsedError;
+  int get xp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +43,15 @@ abstract class $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String username,
       String firstName,
       String lastName,
       String email,
       String password,
       int correctAnswers,
       int wrongAnswers,
-      String season});
+      String avatarUrl,
+      int xp});
 }
 
 /// @nodoc
@@ -64,18 +68,24 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @override
   $Res call({
     Object? id = null,
+    Object? username = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? email = null,
     Object? password = null,
     Object? correctAnswers = null,
     Object? wrongAnswers = null,
-    Object? season = null,
+    Object? avatarUrl = null,
+    Object? xp = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: null == firstName
           ? _value.firstName
@@ -101,10 +111,14 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.wrongAnswers
           : wrongAnswers // ignore: cast_nullable_to_non_nullable
               as int,
-      season: null == season
-          ? _value.season
-          : season // ignore: cast_nullable_to_non_nullable
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      xp: null == xp
+          ? _value.xp
+          : xp // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -117,13 +131,15 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
+      String username,
       String firstName,
       String lastName,
       String email,
       String password,
       int correctAnswers,
       int wrongAnswers,
-      String season});
+      String avatarUrl,
+      int xp});
 }
 
 /// @nodoc
@@ -136,18 +152,24 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @override
   $Res call({
     Object? id = null,
+    Object? username = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? email = null,
     Object? password = null,
     Object? correctAnswers = null,
     Object? wrongAnswers = null,
-    Object? season = null,
+    Object? avatarUrl = null,
+    Object? xp = null,
   }) {
     return _then(_$_User(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
+              as String,
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
               as String,
       firstName: null == firstName
           ? _value.firstName
@@ -173,10 +195,14 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
           ? _value.wrongAnswers
           : wrongAnswers // ignore: cast_nullable_to_non_nullable
               as int,
-      season: null == season
-          ? _value.season
-          : season // ignore: cast_nullable_to_non_nullable
+      avatarUrl: null == avatarUrl
+          ? _value.avatarUrl
+          : avatarUrl // ignore: cast_nullable_to_non_nullable
               as String,
+      xp: null == xp
+          ? _value.xp
+          : xp // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -186,18 +212,22 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 class _$_User implements _User {
   const _$_User(
       {required this.id,
+      required this.username,
       required this.firstName,
       required this.lastName,
       required this.email,
       required this.password,
       required this.correctAnswers,
       required this.wrongAnswers,
-      required this.season});
+      required this.avatarUrl,
+      required this.xp});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
   final String id;
+  @override
+  final String username;
   @override
   final String firstName;
   @override
@@ -211,11 +241,13 @@ class _$_User implements _User {
   @override
   final int wrongAnswers;
   @override
-  final String season;
+  final String avatarUrl;
+  @override
+  final int xp;
 
   @override
   String toString() {
-    return 'User(id: $id, firstName: $firstName, lastName: $lastName, email: $email, password: $password, correctAnswers: $correctAnswers, wrongAnswers: $wrongAnswers, season: $season)';
+    return 'User(id: $id, username: $username, firstName: $firstName, lastName: $lastName, email: $email, password: $password, correctAnswers: $correctAnswers, wrongAnswers: $wrongAnswers, avatarUrl: $avatarUrl, xp: $xp)';
   }
 
   @override
@@ -224,6 +256,8 @@ class _$_User implements _User {
         (other.runtimeType == runtimeType &&
             other is _$_User &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.username, username) ||
+                other.username == username) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -235,13 +269,15 @@ class _$_User implements _User {
                 other.correctAnswers == correctAnswers) &&
             (identical(other.wrongAnswers, wrongAnswers) ||
                 other.wrongAnswers == wrongAnswers) &&
-            (identical(other.season, season) || other.season == season));
+            (identical(other.avatarUrl, avatarUrl) ||
+                other.avatarUrl == avatarUrl) &&
+            (identical(other.xp, xp) || other.xp == xp));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, firstName, lastName, email,
-      password, correctAnswers, wrongAnswers, season);
+  int get hashCode => Object.hash(runtimeType, id, username, firstName,
+      lastName, email, password, correctAnswers, wrongAnswers, avatarUrl, xp);
 
   @JsonKey(ignore: true)
   @override
@@ -260,18 +296,22 @@ class _$_User implements _User {
 abstract class _User implements User {
   const factory _User(
       {required final String id,
+      required final String username,
       required final String firstName,
       required final String lastName,
       required final String email,
       required final String password,
       required final int correctAnswers,
       required final int wrongAnswers,
-      required final String season}) = _$_User;
+      required final String avatarUrl,
+      required final int xp}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
   @override
   String get id;
+  @override
+  String get username;
   @override
   String get firstName;
   @override
@@ -285,7 +325,9 @@ abstract class _User implements User {
   @override
   int get wrongAnswers;
   @override
-  String get season;
+  String get avatarUrl;
+  @override
+  int get xp;
   @override
   @JsonKey(ignore: true)
   _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
