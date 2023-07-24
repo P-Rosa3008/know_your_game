@@ -12,10 +12,10 @@ class QuestionPageProvider extends StateNotifier<AsyncValue<QuestionPage>> {
 
   QuestionPageProvider(this._questionPageRepository) : super(AsyncValue.data(QuestionPage.initialState()));
 
-  Future<void> retrieveQuestionPage() async {
+  Future<void> retrieveQuestionPage({int? law}) async {
     try {
       state = const AsyncLoading();
-      final questionPage = await _questionPageRepository.retrieveQuestionPage();
+      final questionPage = await _questionPageRepository.retrieveQuestionPage(law: law);
       state = AsyncValue.data(questionPage);
     } catch (exception, stackTrace) {
       state = AsyncValue.error(exception, stackTrace);
