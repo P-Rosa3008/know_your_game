@@ -19,9 +19,10 @@ class _QuestionPageRepositoryImpl implements QuestionPageRepositoryImpl {
   String? baseUrl;
 
   @override
-  Future<QuestionPage> retrieveQuestionPage() async {
+  Future<QuestionPage> retrieveQuestionPage({law}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'law': law};
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio

@@ -20,5 +20,5 @@ abstract class QuestionPageRepositoryImpl implements QuestionPageRepository {
 
   @GET('/api/questions')
   @override
-  Future<QuestionPage> retrieveQuestionPage();
+  Future<QuestionPage> retrieveQuestionPage({@Query("law") int? law});
 }

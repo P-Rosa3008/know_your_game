@@ -1,5 +1,5 @@
 import '../model/model.dart';
 
 abstract class QuestionPageRepository {
-  Future<QuestionPage> retrieveQuestionPage();
+  Future<QuestionPage> retrieveQuestionPage({int? law});
 }
