@@ -31,7 +31,7 @@ class _QuestionPageState extends ConsumerState<QuestionPage> with SingleTickerPr
 
   void _retrieveQuestionPage() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(questionPageProvider.notifier).retrieveQuestionPage();
+      ref.read(questionPageProvider.notifier).retrieveQuestionPage(law: 12);
     });
   }
 
@@ -72,7 +72,7 @@ class _QuestionPageState extends ConsumerState<QuestionPage> with SingleTickerPr
               bottom: 32.0,
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
@@ -123,7 +123,7 @@ class _QuestionPageState extends ConsumerState<QuestionPage> with SingleTickerPr
                   child: Container(),
                 ),
                 SizedBox(
-                  height: 400,
+                  height: 500,
                   child: PageView.builder(
                     physics: NeverScrollableScrollPhysics(),
                     itemCount: data.questions.length,
