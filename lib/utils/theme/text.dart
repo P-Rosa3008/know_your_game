@@ -41,15 +41,20 @@ final textTheme = TextTheme(
     fontWeight: FontWeight.w400,
     letterSpacing: 0.25,
   ),
+  bodySmall: GoogleFonts.nunito(
+    fontSize: 11,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.4,
+  ),
   labelLarge: GoogleFonts.nunito(
     fontSize: 13,
     fontWeight: FontWeight.w500,
     letterSpacing: 1.25,
   ),
-  bodySmall: GoogleFonts.nunito(
+  labelMedium: GoogleFonts.nunito(
     fontSize: 11,
-    fontWeight: FontWeight.w400,
-    letterSpacing: 0.4,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 1.5,
   ),
   labelSmall: GoogleFonts.nunito(
     fontSize: 9,
