@@ -4,10 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:know_your_game/features/main_page/widgets/rule_book_button.dart';
 import 'package:know_your_game/features/questions_page/view/question_page.dart';
-import 'package:know_your_game/utils/dummy/dummy_user.dart';
-import 'package:know_your_game/utils/utils.dart';
-import 'package:know_your_game/utils/widgets/kyg_container.dart';
-import 'package:know_your_game/utils/widgets/kyg_list_tile.dart';
+import 'package:know_your_game/features/questions_page/view_model/question_page_provider.dart';
+
+import '../../../utils/utils.dart';
 
 class MainPage extends ConsumerStatefulWidget {
   const MainPage({super.key});
@@ -17,6 +16,12 @@ class MainPage extends ConsumerStatefulWidget {
 }
 
 class _MainPageState extends ConsumerState<MainPage> {
+  void _retrieveQuestionPage() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(questionPageProvider.notifier).retrieveQuestionPage();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,27 +40,13 @@ class _MainPageState extends ConsumerState<MainPage> {
                     RuleBookButton(),
                     Row(
                       children: [
-                        Expanded(
-                          child: KygContainer(
-                            height: MediaQuery.of(context).size.width * 0.75,
-                            padding: EdgeInsets.symmetric(horizontal: 8),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                KygListTile(user: dummyUser),
-                                KygListTile(user: dummyUser),
-                                KygListTile(user: dummyUser),
-                                KygListTile(user: dummyUser),
-                                KygListTile(user: dummyUser),
-                              ],
-                            ),
-                          ),
-                        ),
+                        KygLeaderboard(),
                       ],
                     ),
                     KygButton(
                       onTap: () {
                         ref.read(firstTimeQuestionScreenProvider.notifier).state = true;
+                        _retrieveQuestionPage();
                         context.go(RoutesEndpoints.questions);
                       },
                       width: MediaQuery.of(context).size.width * 0.5,

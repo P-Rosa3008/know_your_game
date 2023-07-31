@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' hide ErrorWidget;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:know_your_game/features/questions_page/view/questions_page_loading.dart';
 import 'package:know_your_game/features/questions_page/view/widgets/answers.dart';
 import 'package:know_your_game/features/questions_page/view/widgets/question.dart';
 import 'package:know_your_game/features/questions_page/view_model/question_page_provider.dart';
@@ -29,17 +30,10 @@ class _QuestionPageState extends ConsumerState<QuestionPage> with SingleTickerPr
 
   late RiveAnimationController _animationController;
 
-  void _retrieveQuestionPage() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(questionPageProvider.notifier).retrieveQuestionPage(law: 12);
-    });
-  }
-
   @override
   void initState() {
     super.initState();
     _controller = PageController(initialPage: 0);
-    _retrieveQuestionPage();
     showProgressBarAnimation = false;
     _animationController = SimpleAnimation(
       'Animation 1',
@@ -185,11 +179,7 @@ class _QuestionPageState extends ConsumerState<QuestionPage> with SingleTickerPr
           );
         },
         loading: () {
-          return const Center(
-            child: CircularProgressIndicator(
-              key: Key('question_page_loading_widget'),
-            ),
-          );
+          return QuestionsPageLoading();
         },
       ),
     );
