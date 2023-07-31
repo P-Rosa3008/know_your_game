@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:know_your_game/features/entry_page/view/entry_page.dart';
@@ -69,6 +71,16 @@ class _MyAppState extends State<MyApp> {
       scrollBehavior: CustomScroll(),
       title: 'KnowYourGame',
       routerConfig: _router,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''),
+        Locale('pt', ''),
+      ],
     );
   }
 }
