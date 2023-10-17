@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:know_your_game/features/auth_page/view/auth_page.dart';
 import 'package:know_your_game/features/entry_page/view/entry_page.dart';
 import 'package:know_your_game/features/main_page/main_page.dart';
 import 'package:know_your_game/features/profile_page/view/profile_page.dart';
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final GoRouter _router = GoRouter(
-      initialLocation: RoutesEndpoints.main,
+      initialLocation: RoutesEndpoints.auth,
       routes: <RouteBase>[
         ShellRoute(
           builder: (context, state, child) {
@@ -47,6 +48,10 @@ class _MyAppState extends State<MyApp> {
               pageBuilder: (context, GoRouterState state) => KygPageTransition().build(ProfilePage()),
             )
           ],
+        ),
+        GoRoute(
+          path: RoutesEndpoints.auth,
+          pageBuilder: (context, GoRouterState state) => KygPageTransition().build(AuthPage()),
         ),
         GoRoute(
           path: RoutesEndpoints.questionsResults,

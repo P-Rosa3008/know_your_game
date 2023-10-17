@@ -4,4 +4,5 @@ class RoutesEndpoints {
   static final String questionsResults = '/questions_results';
   static final String questions = '/questions';
   static final String pdfViewer = '/pdfViewer';
+  static final String auth = '/auth';
 }
